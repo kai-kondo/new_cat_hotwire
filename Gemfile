@@ -73,3 +73,4 @@ end
 
 gem 'pry-rails'
 gem 'bootstrap', '~> 5.1.3'
+gem "kaminari"
