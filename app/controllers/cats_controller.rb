@@ -30,40 +30,28 @@ class CatsController < ApplicationController
 
   # POST /cats or /cats.json
   def create
-    @cat = Cat.new(cat_params)
+    cat = Cat.new(cat_params)
 
-    respond_to do |format|
-      if @cat.save
-        format.html { redirect_to cat_url(@cat), notice: "Cat was successfully created." }
-        format.json { render :show, status: :created, location: @cat }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @cat.errors, status: :unprocessable_entity }
-      end
+    if @cat.save
+      redirect_to @cat, notice: "ねこを登録しました。"
+    else
+      render :new, status: :unprocessable_entity
     end
   end
-
-  # PATCH/PUT /cats/1 or /cats/1.json
+  
+  # PATCH/PUT /cats/1
   def update
-    respond_to do |format|
-      if @cat.update(cat_params)
-        format.html { redirect_to cat_url(@cat), notice: "Cat was successfully updated." }
-        format.json { render :show, status: :ok, location: @cat }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @cat.errors, status: :unprocessable_entity }
-      end
+    if @cat.update(cat_params)
+      redirect_to @cat, notice: "ねこを更新しました。"
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /cats/1 or /cats/1.json
+  # DELETE /cats/1
   def destroy
     @cat.destroy
-
-    respond_to do |format|
-      format.html { redirect_to cats_url, notice: "Cat was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to cats_url, notice: "ねこを削除しました。"
   end
 
   private
