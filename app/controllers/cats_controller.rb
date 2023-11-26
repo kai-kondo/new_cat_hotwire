@@ -30,10 +30,10 @@ class CatsController < ApplicationController
 
   # POST /cats or /cats.json
   def create
-    cat = Cat.new(cat_params)
+    @cat = Cat.new(cat_params)
 
     if @cat.save
-      redirect_to @cat, notice: "ねこを登録しました。"
+      flash.now.notice = "ねこを登録しました"
     else
       render :new, status: :unprocessable_entity
     end
