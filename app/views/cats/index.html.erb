@@ -37,6 +37,9 @@
   </div>
 
   <div class="card-body mx-3">
+    <%# 一覧部分はturbo_frame_tagで囲む %>
+    <%# id属性は"cat-list"とする %>
+    <%= turbo_frame_tag "cats-list" do %>
     <div class="row py-2">
       <div class="col-4 mt-auto">
         <%= sort_link(@search, :name) %>
@@ -57,5 +60,6 @@
     <div class="d-flex justify-content-end mt-3">
       <%= paginate @cats %>
     </div>
+    <%end%>
   </div>
 </div>
