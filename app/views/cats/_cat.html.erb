@@ -1,3 +1,5 @@
+<%# 全体をturbo_frame_tagで囲む %>
+<%= turbo_frame_tag cat do %>
 <div class="row py-2 border-top">
   <div class="col-4 my-auto">
     <%= cat.name %>
@@ -12,3 +14,4 @@
     </div>
   </div>
 </div>
+<% end %>
