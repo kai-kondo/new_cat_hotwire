@@ -1,10 +1,4 @@
-<h1>猫を編集する</h1>
+<%= render "modal" , title: "編集" do %>
+  <%= render "form", cat: @cat %>
 
-<%= render "form", cat: @cat %>
-
-<br>
-
-<div>
-  <%= link_to "詳細", @cat %> |
-  <%= link_to "戻る", cats_path %>
-</div>
+<% end %>
