@@ -29,10 +29,5 @@
         </div>
       </div>
     </div>
-
-    <%= render "modal" , title: "編集" do %>
-  <%= render "form", cat: @cat %>
-
-<% end %>
-
+    <%= turbo_frame_tag "modal" %>
   </body>
