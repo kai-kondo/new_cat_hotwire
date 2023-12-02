@@ -21,8 +21,8 @@
           controller: "form",
           action: "input->form#submit"
 
-         }
-       }) do |f| %>
+        }
+    }) do |f| %>
       <div class="row g3 mb-3">
         <div class="col-4 col-xl-2">
           <%= f.label :name_cont, "名前", class: "form-label" %>
@@ -68,13 +68,19 @@
 
 
     <%# 登録リンククリック時に、cats#newの新規登録部分をここに置換する %>
-    <div id="cats">
-    <%= render @cats %>
+    <div id ="cats">
+      <%# 今のページのturbo-frame%>
+      <%= turbo_frame_tag "cats-page-#{@cats.current_page}" do %>
+      <%# 今のページで取得したCat一覧 %>
+      <%= render @cats %>
+
+      <%# 遅延読み込みで次ページを取得する`<turbo-frame>` %>
+      <%= turbo_frame_tag "cats-page-#{@cats.next_page}", loading: :lazy , src: path_to_next_page(@cats) %>
+      <% end %>
     </div>
 
-    <div class="d-flex justify-content-end mt-3">
-      <%= paginate @cats %>
+
+<% end %>
     </div>
-    <%end%>
   </div>
 </div>
